@@ -13,7 +13,9 @@
 - Python 3.10
 - Django 4.2.3
 - Django Rest Framework
-- SQLite
+- Postgres
+- redis
+- Celery
 
 ## Установка и запуск
 
@@ -27,28 +29,39 @@
     ```bash
     cd broadcast_service
     ```
-3. Создание и активация виртуального окружения:
+   
+3. Создать файл .env:
     ```bash
-    python3 -m venv venv
-    source venv/bin/activate
+    touch .env
     ```
-4. Установка зависимостей:
-    ```bash
-    pip install -r requirements.txt
-    ```
-5. Применение миграций:
-    ```bash
-    python manage.py migrate
-    ```
-6. Запуск сервера:
-    ```bash
-    python manage.py runserver
-    ```
+   
+4. Откройте созданный .env файл в текстовом редакторе и добавьте следующие строки:
+   ```
+   DATABASE_NAME=broadcast
+   DATABASE_USER=broadcast_admin
+   DATABASE_PASSWORD=admin123
+   DATABASE_HOST=db
+   DATABASE_PORT=5432
+   ```
+   
+5. Запустите docker compose:
+   ```bash
+   docker-compose up --build -d
+   ```
+   
+6. Проведите миграции в django контейнере:
+   ```bash
+   docker exec -it broadcast_service-web-1 python manage.py migrate
+   ```
 
-## Тестирование API
+Далее вы можете воспользоваться тестовыми данными из data.json
+   ```bash
+   docker exec -it broadcast_service-web-1 python manage.py loaddata data.json
+   ```
 
-Для проверки API используйте коллекцию Postman, которую вы найдете в файле `postman_collection.json` в корневом каталоге проекта.
-
-## Документация
-
-Полная документация доступна по адресу `http://localhost:8000/docs`.
+Либо используйте файл broadcast_requests.postman_collection.json в нем хранятся запросы для Postman
+Чтобы использовать их, следуйте инструкции:
+1. Откройте Postman.
+2. Нажмите кнопку "Import" в верхнем левом углу интерфейса Postman.
+3. В открывшемся диалоговом окне выберите "Upload Files" и выберите broadcast_requests.postman_collection.json
+4. Нажмите "Open" или "Import", и ваша коллекция должна быть импортирована в Postman.

@@ -1,0 +1,42 @@
+version: '3.10'
+
+services:
+  db:
+    image: postgres:12.0-alpine
+    environment:
+      POSTGRES_DB: broadcast
+      POSTGRES_USER: broadcast_admin
+      POSTGRES_PASSWORD: admin123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - .env
+
+  web:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - .:/web
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+#    entrypoint: bash -c "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000 --bind"
+    restart: always
+
+  redis:
+    image: redis:5.0.5-alpine
+
+  celery:
+    build: .
+    command: celery -A broadcast_service worker --loglevel=info
+    volumes:
+      - .:/celery_app
+    depends_on:
+      - db
+      - redis
+
+volumes:
+  postgres_data:

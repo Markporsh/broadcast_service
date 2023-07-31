@@ -1,0 +1,445 @@
+{
+	"info": {
+		"_postman_id": "37610d20-4ef7-4482-b8f8-a2e1715064c5",
+		"name": "broadcast requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26873410"
+	},
+	"item": [
+		{
+			"name": "Рассылка для Билайн пользователей без указания тега, которая начнется через несколько дней:",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"start_date\": \"2023-07-31T12:00:00Z\",\n  \"message_text\": \"Текст сообщения для доставки клиенту\",\n  \"tag\": \"Билайн\",\n  \"end_date\": \"2023-08-03T18:00:00Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/newsletters/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"newsletters",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Рассылка для МегаФон пользователей с тегом \"МегаФон\", которая уже началась:",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"start_date\": \"2023-07-30T15:00:00\",\n  \"message_text\": \"Дорогие абоненты МегаФон! Не упустите уникальную возможность получить скидку 30% на все тарифные планы. Спешите воспользоваться акцией!\",\n  \"mobile_operator_code\": 901,\n  \"tag\": \"МегаФон\",\n  \"end_date\": \"2023-08-10T23:59:59\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/newsletters/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"newsletters",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Рассылка для МТС пользователей с тегом \"МТС\", которая уже началась:",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"start_date\": \"2023-07-28T08:00:00\",\n  \"message_text\": \"Дорогие клиенты МТС! Поздравляем вас с наступающим Днем системного администратора. Желаем удачи и успешного развития в сфере IT!\",\n  \"mobile_operator_code\": 903,\n  \"tag\": \"МТС\",\n  \"end_date\": \"2023-08-05T23:59:59\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/newsletters/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"newsletters",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Рассылка для Теле2 пользователей с тегом \"Теле2\", которая начнется через несколько дней:",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"start_date\": \"2023-08-03T14:00:00\",\n  \"message_text\": \"Уважаемые абоненты Теле2! Приглашаем вас принять участие в нашем конкурсе и выиграть призы: смартфоны, гаджеты и многое другое!\",\n  \"mobile_operator_code\": 904,\n  \"tag\": \"Теле2\",\n  \"end_date\": \"2023-08-15T23:59:59\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/newsletters/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"newsletters",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Рассылка для МегаФон пользователей с тегом \"МегаФон\", которая начнется через несколько дней:",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"start_date\": \"2023-08-01T12:00:00\",\n  \"message_text\": \"Дорогие абоненты МегаФон! У вас есть уникальная возможность получить скидку 50% на все тарифные планы. Поторопитесь, акция действует только до конца месяца!\",\n  \"mobile_operator_code\": 905,\n  \"tag\": \"МегаФон\",\n  \"end_date\": \"2023-08-31T23:59:59\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/newsletters/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"newsletters",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание пользователя для рассылки \"МегаФон\"",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone_number\": \"79161234567\",\n    \"mobile_operator_code\": 901,\n    \"tag\": \"МегаФон\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/clients/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"clients",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание пользователя для рассылки \"Билайн\"",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone_number\": \"79171234567\",\n    \"mobile_operator_code\": 902,\n    \"tag\": \"Билайн\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/clients/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"clients",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание пользователя для рассылки \"МТС\"",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone_number\": \"79181234567\",\n    \"mobile_operator_code\": 903,\n    \"tag\": \"МТС\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/clients/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"clients",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание пользователя для рассылки \"Теле2\"",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone_number\": \"79191234567\",\n    \"mobile_operator_code\": 904,\n    \"tag\": \"Теле2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/clients/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"clients",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание пользователя для рассылки \"МегаФон\"2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone_number\": \"79201234567\",\n    \"mobile_operator_code\": 905,\n    \"tag\": \"МегаФон\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/clients/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"clients",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание пользователя для рассылки \"Билай\" 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone_number\": \"79211234567\",\n    \"mobile_operator_code\": 906,\n    \"tag\": \"Билайн\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/clients/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"clients",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание пользователя для рассылки \"МТС\" 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone_number\": \"79221234567\",\n    \"mobile_operator_code\": 901,\n    \"tag\": \"МТС\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/clients/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"clients",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание пользователя для рассылки \"Теле2\" 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone_number\": \"79231234567\",\n    \"mobile_operator_code\": 902,\n    \"tag\": \"Теле2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/clients/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"clients",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание пользователя для рассылки \"МегаФон\" 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone_number\": \"79241234567\",\n    \"mobile_operator_code\": 903,\n    \"tag\": \"МегаФон\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/clients/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"clients",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание пользователя для рассылки \"Билайн\" 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone_number\": \"79251234567\",\n    \"mobile_operator_code\": 904,\n    \"tag\": \"Билайн\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/clients/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"clients",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
