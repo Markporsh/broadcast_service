@@ -69,9 +69,97 @@
 INFO
 
 Для получения иформации о логах используйте 
-```bash
-   docker logs broadcast_service-web-1
+   ```bash
+      docker logs broadcast_service-web-1
    ```
-```bash
-   docker logs broadcast_service-celery-1
-```
+   ```bash
+      docker logs broadcast_service-celery-1
+   ```
+
+## Эндпоинты API
+
+### Клиенты
+
+1. **Создать нового клиента**
+
+   POST /clients/
+
+   Пример запроса:
+   ```json
+   {
+       "phone_number": "71234567890",
+       "mobile_operator_code": 10,
+       "tag": "VIP"
+   }
+   ```
+2. **Получить список всех клиентов**
+
+   GET /clients/
+
+3. **Получить информацию о конкретном клиенте**
+
+   GET /clients/{id}/
+
+4. **Обновить информацию о конкретном клиенте**
+
+   PUT /clients/{id}/
+
+   Пример запроса:
+   ```json
+   {
+       "phone_number": "71234567890",
+       "mobile_operator_code": 20,
+       "tag": "Regular"
+   }
+   ```
+5. **Удалить конкретного клиента**
+
+   DELETE /clients/{id}/
+
+### Рассылки
+
+1. **Создать новую рассылку**
+   
+   POST /newsletters/
+
+   
+   Тело запроса:
+   
+   ```json
+   {
+       "start_date": "2023-07-30T10:00:00Z",
+       "message_text": "This is a sample newsletter message.",
+       "mobile_operator_code": 10,
+       "tag": "VIP",
+       "end_date": "2023-07-30T12:00:00Z"
+   }
+   ```
+
+2. **Получить список всех рассылок**
+
+   GET /newsletters/
+
+3. **Получить информацию о конкретной рассылке**
+
+   GET /newsletters/{id}/
+
+4. **Обновить информацию о конкретной рассылке**
+
+   PUT /newsletters/{id}/
+   
+   Тело запроса:
+   
+   ```json
+   {
+    "start_date": "2023-07-30T10:00:00Z",
+    "message_text": "This is an updated newsletter message.",
+    "mobile_operator_code": 10,
+    "tag": "VIP",
+    "end_date": "2023-07-30T12:00:00Z"
+   }
+   ```
+5. **Удалить конкретную рассылку**
+
+   DELETE /newsletters/{id}/
+
+Не забудьте заменить {id} на соответствующий id рассылки, с которой вы хотите взаимодействовать.
