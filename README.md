@@ -65,3 +65,13 @@
 2. Нажмите кнопку "Import" в верхнем левом углу интерфейса Postman.
 3. В открывшемся диалоговом окне выберите "Upload Files" и выберите broadcast_requests.postman_collection.json
 4. Нажмите "Open" или "Import", и ваша коллекция должна быть импортирована в Postman.
+
+INFO
+
+Для получения иформации о логах используйте 
+```bash
+   docker logs broadcast_service-web-1
+   ```
+```bash
+   docker logs broadcast_service-celery-1
+```
